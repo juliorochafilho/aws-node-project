@@ -5,7 +5,18 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
+  region: sa-east-1 # São Paulo
+  memorySize: 256 
+  iamRoleStatements: 
+    - Effect: Allow
+      Action: 
+        - s3:GetObject
+        - s3:PutObject
+      Resource: 
+        - "arn:aws:s3:::*"
+
 
 functions:
   hello:
     handler: handler.hello
+    
